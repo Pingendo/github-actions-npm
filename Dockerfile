@@ -1,4 +1,4 @@
-FROM node:10-slim
+FROM node:10-alpine
 
 LABEL version="1.0.0"
 LABEL repository="http://github.com/actions/npm"
@@ -10,6 +10,8 @@ LABEL com.github.actions.description="Wraps the npm CLI to enable common npm com
 LABEL com.github.actions.icon="package"
 LABEL com.github.actions.color="red"
 COPY LICENSE README.md THIRD_PARTY_NOTICE.md /
+
+RUN apk --no-cache add zip openssl
 
 COPY "entrypoint.sh" "/entrypoint.sh"
 ENTRYPOINT ["/entrypoint.sh"]
