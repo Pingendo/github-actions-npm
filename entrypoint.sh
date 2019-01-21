@@ -12,6 +12,6 @@ if [ -n "$NPM_AUTH_TOKEN" ]; then
   chmod 0600 "$NPM_CONFIG_USERCONFIG"
 fi
 
-GATEWAY=`ip route | awk 'NR==1 {print $3}'`
+echo `ip route | awk 'NR==1 {print $3}'`	gateway >> /etc/hosts
 
 sh -c "npm $*"
